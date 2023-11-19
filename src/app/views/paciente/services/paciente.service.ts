@@ -18,6 +18,9 @@ export class PacienteService {
     }
 
     public inserir(paciente: FormPacienteViewModel): Observable<FormPacienteViewModel>{
+        console.log('entrei no service');
+        console.log(paciente);
+
         return this.http.post<FormPacienteViewModel>(this.apiUlr + 'paciente', paciente)
         .pipe(
             map((this.processarDados)), catchError(this.processarFalha)
