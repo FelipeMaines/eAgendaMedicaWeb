@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -40,7 +41,8 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MatInputModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    SharedModule,
   ]
   ,
   providers: [PacienteService]

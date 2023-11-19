@@ -5,10 +5,11 @@
                 <mat-icon class="fs-3">library_add</mat-icon>
                 Cadastro de Paciente
             </h1>
+            
             <mat-card class="p-4">
                 <mat-card-content>
                     <form class="d-grid gap-3 fs-6 p-3" [formGroup]="formPaciente" (ngSubmit)="gravar()">
-                        <mat-label class="fs-5 fw-semibold">Informações</mat-label>
+                        <mat-label class="fs-5 fw-semibold mb-2">Informações</mat-label>
     
                         <mat-form-field appearance="outline">
                             <mat-label for="titulo">Nome</mat-label>
@@ -88,6 +89,10 @@
                                 <span *ngIf="cep?.errors?.['required']">O email é obrigatório</span>
                             </mat-error>
                         </mat-form-field>
+
+                        <button mat-raised-button color="accent">Gravar</button>
+                        <button mat-raised-button color="warn">Cancelar</button>
+
                     </form>
                 </mat-card-content>
             </mat-card>

@@ -1,19 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PacienteService } from '../services/paciente.service';
+import { FormPacienteViewModel } from '../models/form-paciente.view-model';
+import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-inseir-paciente',
   templateUrl: './inseir-paciente.component.html',
   styleUrls: ['./inseir-paciente.component.scss']
 })
-export class InseirPacienteComponent implements OnInit{
+export class InseirPacienteComponent extends BaseFormComponent implements OnInit {
   formPaciente!: FormGroup;
+  public pacienteFormViewModel?: FormPacienteViewModel;
 
-  constructor(private pacienteService: PacienteService, private formBuilder: FormBuilder) {}
+  constructor(private pacienteService: PacienteService,
+     private formBuilder: FormBuilder,
+     private notificacao: NotificationService) {super()}
 
   public gravar(){
+    if(this.formPaciente.invalid)
+    {
+      this.notificacao.aviso("O formulário deve ser preenchido corretamente!");
+      this.exibirMensagensValidacao(this.formPaciente);
+      return;
+    }
 
+    this.pacienteFormViewModel = Object.assign({}, this.pacienteFormViewModel, this.formPaciente.value);
+
+    console.log(this.pacienteFormViewModel);
+
+    this.pacienteService.inserir(this.pacienteFormViewModel!)
+    .subscribe({
+      next: (paciente) => this.processarSucesso(paciente),
+      error: (erro) => this.processarErro(erro)
+    })
+  }
+
+  private processarSucesso(paciente: FormPacienteViewModel){
+    this.notificacao.sucesso(`O paciente ${paciente.nome} foi inserido com sucesso!`)
+  }
+
+  private processarErro(erro: any){
+    this.notificacao.erro(erro);
   }
 
   get nome() {
