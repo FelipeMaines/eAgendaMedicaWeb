@@ -1,13 +1,13 @@
 <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
         (closed)="events.push('close!')">
-        <mat-toolbar>Menu</mat-toolbar>
-        <mat-nav-list>
-            <a mat-list-item routerlink="/api/medico">Painel de Controle</a>
-            <a mat-list-item routerlink="/api/medico"><mat-icon fontIcon="emoji_people"></mat-icon><span class="ms-2"></span>Medicos</a>
-            <a mat-list-item routerlink="/api/paciente"><mat-icon fontIcon="elderly"></mat-icon><span class="ms-2"></span>Pacientes</a>
-            <a mat-list-item routerlink="/api/cirurgia"><mat-icon fontIcon="vaccines"></mat-icon><span class="ms-2"></span>Cirurgias</a>
-            <a mat-list-item routerlink="/api/consulta"><mat-icon fontIcon="medication_liquid"></mat-icon><span class="ms-2"></span>Consultas</a>
+        <mat-toolbar class="d-flex align-items-center justify-content-center">Menu</mat-toolbar>
+        <mat-nav-list class="p-2 ">
+            <a mat-list-item routerlink="">Painel de Controle</a>
+            <a mat-list-item routerlink="/medicos"><mat-icon fontIcon="emoji_people"></mat-icon><span class="ms-2"></span>Medicos</a>
+            <a mat-list-item routerlink="/pacientes"><mat-icon fontIcon="elderly"></mat-icon><span class="ms-2"></span>Pacientes</a>
+            <a mat-list-item routerlink="/cirurgias"><mat-icon fontIcon="vaccines"></mat-icon><span class="ms-2"></span>Cirurgias</a>
+            <a mat-list-item routerlink="/consultas"><mat-icon fontIcon="medication_liquid"></mat-icon><span class="ms-2"></span>Consultas</a>
 
         </mat-nav-list>
     </mat-sidenav>
@@ -18,7 +18,7 @@
             <mat-toolbar>
                 <button mat-icon-button class="example-icon" (click)="sidenav.toggle()"
                     aria-label="Example icon-button with menu icon">
-                    <mat-icon>Menu</mat-icon>
+                    <mat-icon>menu</mat-icon>
                 </button>
                 <span>eAgenda Medica</span>
                 <span class="example-spacer"></span>

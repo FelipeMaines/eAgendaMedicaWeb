@@ -1,1 +1,40 @@
-<h1>deasd</h1>
+<div class="container-fluid align-items-center">
+    <div class="row justify-content-center">
+        <section class="col-md-6">
+            <h1 class="row align-items-center gap-4 fs-2 fw-semibold my-2 col-sm ms-2">
+                <mat-icon class="fs-3">menu</mat-icon>
+                Menu Principal
+            </h1>
+
+            <mat-card class="mt-2">
+                <mat-card-content class="p-2 p-md-4 d-grid gap-3">
+                    <h2 class="fs-4">Olá,
+                        <span>Nome do usuario (IMPLEMENTAR)</span>
+                    </h2>
+
+                    <section class="fs-6 fw-light" aria-label="Introdução do usuário">
+                        <div class="fs-6 row justify-content-center text-center">
+                            <p>Este é o DashBoard, através daqui, você pode acessar as funcionalidades da aplicação.</p>
+                            <p>Use a barra lateral da esquerda para acessar todas as funcionalidades</p>
+
+                            <div>
+                                <h2>Deseja comecar marcando uma consulta?</h2>
+                                <a mat-flat-button
+                                class="fs-6 col py-1"
+                                routerLink="/pacientes"
+                                color="accent"
+                                role="button">
+                                Cadastre uma tarefa!
+                              </a>
+                            </div>
+                        </div>
+                    </section>
+                </mat-card-content>
+            </mat-card>
+        </section>
+
+        <figure class="d-none d-lg-block col-auto align-items-center p-3">
+            <img src="../../../assets/medicoDashBoard1.webp" class="img-fluid mw-100" height="420" alt="Imagem ilustrando uma pessoa interagindo com a aplicação">
+        </figure>
+    </div>
+</div>

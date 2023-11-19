@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   events: string[] = [];
-  opened: boolean = false;
+  opened: boolean = true;
 
   // links = [{
   //  link: 'medico'
