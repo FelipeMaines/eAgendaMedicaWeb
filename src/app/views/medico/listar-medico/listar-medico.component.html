@@ -1,0 +1,43 @@
+<div class="container-fluid align-items-center">
+
+    <h1 class="row align-items-center gap-4 fs-2 fw-semibold my-2 col-sm ms-2">
+        <mat-icon class="fs-3">menu</mat-icon>
+        Medicos Cadastrados
+    </h1>
+
+
+    <section class="row p-3 gap-2">
+        <mat-card *ngFor="let medico of (medicos$ | async)" class="col-sm-12 col-md-12 col-lg-4 col-xxl-5 p-3 ">
+            <mat-card-header class="fs-3">Nome: {{ medico.nome}}</mat-card-header>
+            <mat-card-content class="mt-2 gap-0">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="row col-lg-4 col-md-6 col-sm-2">
+                        <figure class="d-none d-lg-block col-auto align-items-center p-2">
+                            <img [src]="pegarUrlImage(medico.foto)" class="img-fluid mw-100" alt="">
+                        </figure>
+                    </div>
+
+                    <div class="d-flex flex-column p-0 mt-2 gap-0">
+                        <h2>Email: {{ medico.email }}</h2>
+                        <h2>Telefone: {{ medico.telefone }}</h2>
+                        <h2>Crm: {{ medico.crm }}</h2>
+                    </div>
+                </div>
+
+                <mat-card-footer>
+                    <p>Id: {{ medico.id }}</p>
+                </mat-card-footer>
+
+                <div class="d-flex flex-row gap-2">
+                    <button mat-raised-button color="accent"
+                        routerLink="/medicos/editar/{{ medico.id }}">Editar</button>
+                    <button mat-raised-button color="warn"
+                        routerLink="/medicos/excluir/{{ medico.id }}">Excluir</button>
+                </div>
+
+
+            </mat-card-content>
+
+        </mat-card>
+    </section>
+</div>

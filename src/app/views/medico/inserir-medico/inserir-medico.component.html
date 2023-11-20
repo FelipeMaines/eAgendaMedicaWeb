@@ -1,0 +1,91 @@
+<div class="container h-100 align-items-center justify-content-center">
+    <div class="row align-items-center justify-content-center">
+        <section class="col-sm col-lg-6 col-xxl-7">
+            <h1 class="d-flex align-items-center gap-4 fs-2 fw-semibold">
+                <mat-icon class="fs-3">library_add</mat-icon>
+                Cadastro de Médico
+            </h1>
+
+            <mat-card class="p-4">
+                <mat-card-content>
+
+                    <mat-label for="titulo">Foto</mat-label>
+                    <input type="file" (change)="onFileSelected($event)">
+
+                    <form class="d-grid gap-3 fs-6 p-3" [formGroup]="formMedico" (ngSubmit)="gravar()">
+                        <mat-label class="fs-5 fw-semibold mb-2">Informações</mat-label>
+                        <mat-form-field appearance="outline">
+                            <mat-label for="titulo">Nome</mat-label>
+                            <input matInput type="text" data-cy="txtNome" formControlName="nome"
+                                placeholder="Ex. Tiagao">
+                            <mat-error class="text-white" *ngIf="nome?.touched && nome?.invalid">
+                                <span *ngIf="nome?.errors?.['minlength']">O nome deve conter no mínimo 3
+                                    caracteres.</span>
+                                <span *ngIf="nome?.errors?.['required']">O nome é obrigatório.</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label for="titulo">Crm</mat-label>
+                            <input matInput type="text" data-cy="txtNome" formControlName="crm" placeholder="12345-SC">
+                            <mat-error class="text-white" *ngIf="crm?.touched && crm?.invalid">
+                                <span *ngIf="crm?.errors?.['pattern']">O crm deve estar formatado.</span>
+                                <span *ngIf="crm?.errors?.['required']">O crm é obrigatório.</span>
+                            </mat-error>
+                        </mat-form-field>
+
+
+                        <mat-form-field>
+                            <mat-label for="titulo">CPF</mat-label>
+                            <input matInput formControlName="cpf" type="text" mask="00000000000" data-cy="txtCpf"
+                                placeholder="Ex. 00000000000">
+                            <mat-error class="text-white" *ngIf="cpf?.touched && cpf?.invalid">
+                                <span *ngIf="cpf?.errors?.['minlength']">Cpf contem 11 digitos</span>
+                                <span *ngIf="cpf?.errors?.['maxlength']">Cpf contem 11 digitos</span>
+                                <span *ngIf="cpf?.errors?.['required']">O Cpf é obrigatório</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label for="titulo">Telefone</mat-label>
+                            <input matInput formControlName="telefone" type="text" mask="00 00000-0000"
+                                data-cy="txtTelefone" placeholder="Ex. (00) 00000-0000">
+                            <mat-error class="text-white" *ngIf="telefone?.touched && telefone?.invalid">
+                                <span *ngIf="telefone?.errors?.['pattern']">O telefone precisa seguir o formato 00
+                                    00000-0000</span>
+                                <span *ngIf="telefone?.errors?.['required']">O telefone é obrigatório</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label for="titulo">CEP</mat-label>
+                            <input matInput formControlName="cep" type="text" data-cy="txtCep"
+                                placeholder="Ex. 00000000">
+                            <mat-error class="text-white" *ngIf="cep?.touched && cep?.invalid">
+                                <span *ngIf="cep?.errors?.['minlength']">Cep contem 8 digitos</span>
+                                <span *ngIf="cep?.errors?.['maxlength']">Cep contem 8 digitos</span>
+                                <span *ngIf="cep?.errors?.['required']">O Cep é obrigatório</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label for="titulo">Email</mat-label>
+                            <input matInput formControlName="email" type="text" data-cy="txtEmail"
+                                placeholder="pedrinho@gmail.com">
+                            <mat-error class="text-white" *ngIf="email?.touched && email?.invalid">
+                                <span *ngIf="email?.errors?.['email']">O email deve estar no formato correto</span>
+                                <span *ngIf="cep?.errors?.['required']">O email é obrigatório</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="accent">Gravar</button>
+                        <button mat-raised-button color="warn">Cancelar</button>
+
+                    </form>
+                </mat-card-content>
+            </mat-card>
+
+
+        </section>
+    </div>
+</div>

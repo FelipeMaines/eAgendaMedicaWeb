@@ -1,0 +1,54 @@
+<div class="container h-100 d-flex align-items-center justify-content-center">
+    <div class="row align-items-center justify-content-center gap-4">
+        <mat-label class="fs-2 p-0">Informações</mat-label>
+        <mat-card class="p-0">
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>
+                        <picture>
+                            <img src="{{medico.foto}}" alt="foto do medico">
+                        </picture>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Nome</span>
+                        <span matListItemLine>{{ medico.nome }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Email</span>
+                        <span matListItemLine>{{ medico.email }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Telefone</span>
+                        <span matListItemLine>{{ medico.telefone }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>CRM</span>
+                        <span matListItemLine>{{ medico.crm }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Cep</span>
+                        <span matListItemLine>{{ medico.cep }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Cpf</span>
+                        <span matListItemLine>{{ medico.cpf }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Horas Trabalhadas</span>
+                        <span matListItemLine>{{ medico.horasTrabalhadas }}</span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <button mat-raised-button color="warn" (click)="gravar()">Excluir</button>
+        <button mat-raised-button color="accent" routerLink="/pacientes/listar">Cancelar</button>
+    </div>
+
+</div>

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PacienteRoutingModule } from './paciente-routing.module';
-import { InseirPacienteComponent } from './inserir-paciente/inseir-paciente.component';
-import { EditarPacienteComponent } from './editar-paciente/editar-paciente.component';
-import { ExcluirPacienteComponent } from './excluir-paciente/excluir-paciente.component';
-import { ListarPacienteComponent } from './listar-paciente/listar-paciente.component';
-import { PacienteService } from './services/paciente.service';
+import { MedicoRoutingModule } from './medico-routing.module';
+import { InserirMedicoComponent } from './inserir-medico/inserir-medico.component';
+import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
+import { ExcluirMedicoComponent } from './excluir-medico/excluir-medico.component';
+import { ListarMedicoComponent } from './listar-medico/listar-medico.component';
+import { MedicoService } from './services/medico.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -20,18 +20,18 @@ import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
-
-
 @NgModule({
   declarations: [
-    InseirPacienteComponent,
-    EditarPacienteComponent,
-    ExcluirPacienteComponent,
-    ListarPacienteComponent,
+    InserirMedicoComponent,
+    EditarMedicoComponent,
+    ExcluirMedicoComponent,
+    ListarMedicoComponent
+
+
   ],
   imports: [
     CommonModule,
-    PacienteRoutingModule,
+    MedicoRoutingModule,
 
     MatCardModule,
     MatGridListModule,
@@ -43,8 +43,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatListModule,
     MatTableModule,
     SharedModule,
-  ]
-  ,
-  providers: [PacienteService]
+  ],
+  providers: [MedicoService]
 })
-export class PacienteModule { }
+export class MedicoModule { }
