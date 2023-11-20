@@ -5,6 +5,9 @@
         Pacientes Cadastrados
     </h1>
 
+    <button mat-raised-button color="accent" routerLink="/pacientes/inserir" class="p-4 mx-4 my-1"><mat-icon>add</mat-icon> Adicionar</button>
+
+
     
         <section class="row p-3 gap-2">
             <mat-card *ngFor="let paciente of (pacientes$ | async)" class="col-sm-12 col-md-12 col-lg-4 col-xxl-5 p-3 ">
