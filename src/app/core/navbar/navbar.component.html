@@ -2,13 +2,12 @@
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
         (closed)="events.push('close!')">
         <mat-toolbar class="d-flex align-items-center justify-content-center">Menu</mat-toolbar>
-        <mat-nav-list class="p-2 ">
-            <a mat-list-item routerlink="">Painel de Controle</a>
-            <a mat-list-item routerlink="/medicos"><mat-icon fontIcon="emoji_people"></mat-icon><span class="ms-2"></span>Medicos</a>
-            <a mat-list-item routerlink="/pacientes"><mat-icon fontIcon="elderly"></mat-icon><span class="ms-2"></span>Pacientes</a>
-            <a mat-list-item routerlink="/cirurgias"><mat-icon fontIcon="vaccines"></mat-icon><span class="ms-2"></span>Cirurgias</a>
-            <a mat-list-item routerlink="/consultas"><mat-icon fontIcon="medication_liquid"></mat-icon><span class="ms-2"></span>Consultas</a>
-
+        <mat-nav-list class="p-2">
+            <a mat-list-item routerLink="">Painel de Controle</a>
+            <a mat-list-item routerLink="/medicos"><mat-icon fontIcon="emoji_people"></mat-icon><span class="ms-2"></span>Medicos</a>
+            <a mat-list-item routerLink="/pacientes/listar"><mat-icon fontIcon="elderly"></mat-icon><span class="ms-2"></span>Pacientes</a>
+            <a mat-list-item routerLink="/cirurgias"><mat-icon fontIcon="vaccines"></mat-icon><span class="ms-2"></span>Cirurgias</a>
+            <a mat-list-item routerLink="/consultas"><mat-icon fontIcon="medication_liquid"></mat-icon><span class="ms-2"></span>Consultas</a>
         </mat-nav-list>
     </mat-sidenav>
 

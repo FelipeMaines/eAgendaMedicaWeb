@@ -8,6 +8,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
+import { NavBarRoutingModule } from './nav-bar-routing.module';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    NavBarRoutingModule,
+    
   ],
   exports: [NavbarComponent]
 })

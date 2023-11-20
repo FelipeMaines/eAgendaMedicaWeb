@@ -27,7 +27,6 @@ import { HttpClientModule } from '@angular/common/http';
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
   ],
-  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

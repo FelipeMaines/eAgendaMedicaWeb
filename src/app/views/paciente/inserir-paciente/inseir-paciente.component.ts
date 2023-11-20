@@ -4,6 +4,7 @@ import { PacienteService } from '../services/paciente.service';
 import { FormPacienteViewModel } from '../models/form-paciente.view-model';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { NotificationService } from 'src/app/core/services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inseir-paciente',
@@ -16,7 +17,19 @@ export class InseirPacienteComponent extends BaseFormComponent implements OnInit
 
   constructor(private pacienteService: PacienteService,
      private formBuilder: FormBuilder,
-     private notificacao: NotificationService) {super()}
+     private notificacao: NotificationService,
+     private router: Router) {super()}
+
+     ngOnInit(): void {
+      this.formPaciente = this.formBuilder.group({
+        nome: ['', [Validators.required, Validators.minLength(3)]],
+        telefone: ['', [Validators.required, Validators.pattern(/^[1-9]{2} [0-9]{4,5}-[0-9]{4}$/)]],
+        email: ['', [Validators.required, Validators.email]],
+        telefoneFamiliar: ['', [Validators.required, Validators.pattern(/^[1-9]{2} [0-9]{4,5}-[0-9]{4}$/)]],
+        cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+        cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]]
+      })
+    }
 
   public gravar(){
     if(this.formPaciente.invalid)
@@ -39,6 +52,7 @@ export class InseirPacienteComponent extends BaseFormComponent implements OnInit
 
   private processarSucesso(paciente: FormPacienteViewModel){
     this.notificacao.sucesso(`O paciente ${paciente.nome} foi inserido com sucesso!`)
+    this.router.navigate(['/pacientes/listar'])
   }
 
   private processarErro(erro: any){
@@ -69,14 +83,5 @@ export class InseirPacienteComponent extends BaseFormComponent implements OnInit
     return this.formPaciente.get('telefoneFamiliar');
   }
 
-  ngOnInit(): void {
-    this.formPaciente = this.formBuilder.group({
-      nome: ['', [Validators.required, Validators.minLength(3)]],
-      telefone: ['', [Validators.required, Validators.pattern(/^[1-9]{2} [0-9]{4,5}-[0-9]{4}$/)]],
-      email: ['', [Validators.required, Validators.email]],
-      telefoneFamiliar: ['', [Validators.required, Validators.pattern(/^[1-9]{2} [0-9]{4,5}-[0-9]{4}$/)]],
-      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
-      cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]]
-    })
-  }
+ 
 }

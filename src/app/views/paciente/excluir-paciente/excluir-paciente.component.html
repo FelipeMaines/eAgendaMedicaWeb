@@ -1,1 +1,43 @@
-<p>excluir-paciente works!</p>
+<div class="container h-100 d-flex align-items-center justify-content-center">
+    <div class="row align-items-center justify-content-center gap-4">
+        <mat-label class="fs-2 p-0">Informações</mat-label>
+        <mat-card class="p-0">
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>
+                        <span matListItemTitle>Nome</span>
+                        <span matListItemLine>{{ pacienteVM.nome }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Email</span>
+                        <span matListItemLine>{{ pacienteVM.email }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Telefone</span>
+                        <span matListItemLine>{{ pacienteVM.telefone }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Telefone de um Familiar</span>
+                        <span matListItemLine>{{ pacienteVM.telefoneFamiliar }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Cep</span>
+                        <span matListItemLine>{{ pacienteVM.cep }}</span>
+                    </mat-list-item>
+                    <hr>
+                    <mat-list-item>
+                        <span matListItemTitle>Cpf</span>
+                        <span matListItemLine>{{ pacienteVM.cpf }}</span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <button mat-raised-button color="warn" (click)="gravar()">Excluir</button>
+        <button mat-raised-button color="accent" routerLink="/pacientes/listar">Cancelar</button>
+    </div>
+
+</div>
