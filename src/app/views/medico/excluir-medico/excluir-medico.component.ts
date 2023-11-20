@@ -3,6 +3,11 @@ import { VisualizarMedicoViewModel } from '../models/visualizar-medico.view-mode
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicoService } from '../services/medico.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
+import { ListarCirurgiaViewModel } from '../../cirurgia/models/listar-cirurgia.view-model';
+import { MatTableDataSource } from '@angular/material/table';
+import { ListarConsultaViewModel } from '../../consulta/models/listar-consulta.view-model';
+
+
 
 @Component({
   selector: 'app-excluir-medico',
@@ -11,16 +16,22 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 })
 export class ExcluirMedicoComponent implements OnInit{
   medico!: VisualizarMedicoViewModel;
-  
+  dataSource = new MatTableDataSource<ListarConsultaViewModel>();
+  displayedColumns: string[] = ['position', 'data', 'horaInicio', 'horaTermino'];
+
   constructor(private router: Router,private route: ActivatedRoute ,private medicoService: MedicoService, private notification: NotificationService) {}
   
   ngOnInit(): void {
     this.medico = this.route.snapshot.data['medico'];
 
+    console.log(this.medico);
+
     this.medicoService.excluir(this.medico.id).subscribe({
       next: (res) => this.processarSucesso(res),
       error: (err) => this.processarFalha(err)
     })
+
+    this.dataSource.data = this.medico.consultas;
   }
 
   processarFalha(err: any): void {

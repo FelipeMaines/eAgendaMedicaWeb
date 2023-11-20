@@ -1,3 +1,5 @@
+import { ListarConsultaViewModel } from "../../consulta/models/listar-consulta.view-model";
+
 export class VisualizarMedicoViewModel {
     id: string;
     nome: string;
@@ -8,6 +10,8 @@ export class VisualizarMedicoViewModel {
     email: string;
     foto?: string;
     horasTrabalhadas: string
+    consultas: ListarConsultaViewModel[] = [];
+    cirurgias: ListarConsultaViewModel[] = [];
 
     constructor(id:string, nome: string, crm: string, telefone: string, email: string, cep: string, cpf:string,  foto: string, horasTrabalhadas: string)
     {

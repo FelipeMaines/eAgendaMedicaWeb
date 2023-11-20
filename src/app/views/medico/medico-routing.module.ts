@@ -38,7 +38,7 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'editar/:id',
+    path: 'excluir/:id',
     component: ExcluirMedicoComponent,
     resolve: {medico: VisualizarMedicoResolver}
   }
