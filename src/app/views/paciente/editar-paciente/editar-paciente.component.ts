@@ -44,7 +44,7 @@ export class EditarPacienteComponent extends BaseFormComponent implements OnInit
       return;
     }
 
-    const id = this.route.snapshot.paramMap.get('id');
+      const id = this.route.snapshot.paramMap.get('id');
 
     this.pacienteViewModel = this.formPaciente.value;
 
