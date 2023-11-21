@@ -9,6 +9,7 @@ const routes: Routes = [
         .then(m => m.PacienteModule)
     },
     
+    
 ];
 
 @NgModule({
