@@ -13,6 +13,7 @@ export class MedicoService{
     constructor(private http: HttpClient) { }
 
     public selecionarTodos(): Observable<ListarMedicoViewModel[]> {
+        
         return this.http.get<ListarMedicoViewModel[]>(this.apiUlr + 'medico')
             .pipe(
                 map(this.processarDados), catchError(this.processarFalha));
@@ -49,7 +50,9 @@ export class MedicoService{
 
     private processarDados(resposta: any) {
         if (resposta?.sucesso)
+        {
             return resposta.dados;
+        }
         else
             return resposta;
     }

@@ -1,0 +1,38 @@
+<div class="container-fluid align-items-center">
+
+    <h1 class="row align-items-center gap-4 fs-2 fw-semibold my-2 col-sm ms-2">
+        <mat-icon class="fs-3">menu</mat-icon>
+        Consultas Cadastradas
+
+    </h1>
+    <button mat-raised-button color="accent" routerLink="/consultas/inserir"
+        class="p-4 mx-4 my-1"><mat-icon>add</mat-icon> Adicionar</button>
+
+
+
+    <section class="row p-3 gap-2">
+        <mat-card *ngFor="let consulta of (consultas$ | async)" class="col-sm-12 col-md-12 col-lg-5 col-xxl-5 p-2 ">
+            <mat-card-header class="fs-3">Data: {{ consulta.data}}</mat-card-header>
+            <mat-card-content class="mt-2 gap-0">
+
+                <div class="d-flex flex-column p-0 mt-2 gap-0">
+                    <div class="d-flex">
+                        <h2>{{consulta.horaInicio}} - {{consulta.horaTermino}}</h2>
+                    </div>
+                </div>
+
+                <mat-card-footer>
+                    <p>Id: {{ consulta.id }}</p>
+                </mat-card-footer>
+
+                <div class="d-flex flex-row gap-2">
+                    <button mat-raised-button color="accent"
+                        routerLink="/consultas/editar/{{ consulta.id }}">Editar</button>
+                    <button mat-raised-button color="warn"
+                        routerLink="/consultas/excluir/{{ consulta.id }}">Excluir</button>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+    </section>
+</div>

@@ -9,9 +9,9 @@ import { VisualizarPacienteViewModel } from '../paciente/models/visualizar-pacie
 import { VisualizarMedicoViewModel } from './models/visualizar-medico.view-model';
 import { ExcluirMedicoComponent } from './excluir-medico/excluir-medico.component';
 
-const FormsMedicoResolver: ResolveFn<FormMedicoViewModel> = (route: ActivatedRouteSnapshot) => {
-  return inject(MedicoService).selecionarPorId(route.paramMap.get('id')!);
-}
+ const FormsMedicoResolver: ResolveFn<FormMedicoViewModel> = (route: ActivatedRouteSnapshot) => {
+   return inject(MedicoService).selecionarPorId(route.paramMap.get('id')!);
+ }
 
 const VisualizarMedicoResolver: ResolveFn<VisualizarMedicoViewModel> = (route: ActivatedRouteSnapshot) => {
   return inject(MedicoService).selecionarPorId(route.paramMap.get('id')!);

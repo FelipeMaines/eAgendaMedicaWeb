@@ -68,7 +68,8 @@ onFileSelected(event: any) {
   if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-          this.formMedico.get('foto')!.setValue(e.target.result);
+          const base64String = e.target?.result?.toString().split(',')[1];
+          this.formMedico.get('foto')?.setValue(base64String);
       };
       reader.readAsDataURL(file);
   }

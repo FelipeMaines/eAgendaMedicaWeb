@@ -9,12 +9,13 @@
 
 
 
-    <section class="row p-3 gap-2">
+    <section class="row p-3 gap-2 d-flex justify-content-center">
         <mat-card *ngFor="let medico of (medicos$ | async)" class="col-sm-12 col-md-12 col-lg-5 col-xxl-5 p-2 ">
             <mat-card-header class="fs-3">Nome: {{ medico.nome}}</mat-card-header>
             <mat-card-content class="mt-2 gap-0">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="row col-lg-4 col-md-6 col-sm-2">
+                    <div class="row col-lg-4 col-md-6 col-sm-12">
+
                         <figure class="d-none d-lg-block col-auto align-items-center p-2">
                             <img [src]="pegarUrlImage(medico.foto)" class="img-fluid mw-100" alt="">
                         </figure>

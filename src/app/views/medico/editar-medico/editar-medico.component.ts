@@ -62,7 +62,7 @@ export class EditarMedicoComponent extends BaseFormComponent implements OnInit{
 
   private processarSucesso(medico: FormMedicoViewModel){
     this.notificacao.sucesso(`O medico ${medico.nome} foi editado com sucesso!`)
-    this.router.navigate(['/pacientes/listar'])
+    this.router.navigate(['/medicos/listar'])
   }
 
   private processarErro(erro: any){
@@ -74,7 +74,8 @@ export class EditarMedicoComponent extends BaseFormComponent implements OnInit{
     if (file) {
         const reader = new FileReader();
         reader.onload = (e: any) => {
-            this.formMedico.get('foto')!.setValue(e.target.result);
+            const base64String = e.target?.result?.toString().split(',')[1];
+            this.formMedico.get('foto')?.setValue(base64String);
         };
         reader.readAsDataURL(file);
     }
