@@ -4,11 +4,10 @@
         <mat-card class="p-0">
             <mat-card-content>
                 <mat-list>
-                    <mat-list-item>
-                        <picture>
-                            <img src="{{medico.foto}}" alt="foto do medico">
-                        </picture>
-                    </mat-list-item>
+                    <picture>
+                        <img [src]="pegarUrlImage(medico.foto!)" alt="foto do medico">
+                    </picture>
+                    
                     <hr>
                     <mat-list-item>
                         <span matListItemTitle>Nome</span>

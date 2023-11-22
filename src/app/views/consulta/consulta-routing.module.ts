@@ -13,15 +13,7 @@ import { FormConsultaViewModel } from './models/form-consulta.view-model';
 import { ConsultaService } from './services/consulta.service';
 import { VisualizarConsultaViewModel } from './models/visualizar-consulta.view-model';
 
-const listarMedicosResolve: ResolveFn<ListarMedicoViewModel[]> = () => {
-  return inject(MedicoService).selecionarTodos();
-}
-
-const listarPacientesResolve: ResolveFn<ListarPacienteViewModel[]> = () => {
-  return inject(PacienteService).selecionarTodos();
-}
-
-const FormsConsultaResolve: ResolveFn<VisualizarConsultaViewModel> = (route: ActivatedRouteSnapshot) => {
+const visualizarConsultaResolve: ResolveFn<VisualizarConsultaViewModel> = (route: ActivatedRouteSnapshot) => {
   return inject(ConsultaService).selecionarPorId(route.paramMap.get('id')!);
 }
 
@@ -38,17 +30,16 @@ const routes: Routes = [
   {
     path: 'inserir',
     component: InserirConsultaComponent,
-    // resolve: {medicos: listarMedicosResolve, pacientes: listarPacientesResolve}
-    
   },
   {
     path: 'editar/:id',
     component: EditarConsultaComponent,
-    resolve: {consulta: FormsConsultaResolve}
+    resolve: {consulta: visualizarConsultaResolve}
   },
   {
     path: 'excluir/:id',
-    component: ExcluirConsultaComponent
+    component: ExcluirConsultaComponent,
+    resolve: {consulta: visualizarConsultaResolve}
   }
 ];
 

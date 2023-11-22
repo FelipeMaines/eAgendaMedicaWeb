@@ -1,1 +1,72 @@
-<p>excluir-consulta works!</p>
+<div class="container align-items-center">
+    <div class="row col-auto">
+        <mat-list>
+            <mat-list-item>
+                <span matListItemTitle>Data</span>
+                <span matListItemLine>{{consultaVM.data}}</span>
+            </mat-list-item>
+            <mat-list-item>
+                <span matListItemTitle>Horário</span>
+                <span matListItemLine>{{ consultaVM.horaInicio }} - {{ consultaVM.horaTermino}}</span>
+            </mat-list-item>
+        </mat-list>
+
+        <mat-label class="fw-semibold fs-4 p-2 pl-0">Médico</mat-label>
+        <mat-card class="p-0 mb-4">
+            <mat-card-content class="d-flex">
+                <div>
+                    <mat-list-item>
+                        <figure>
+                            <img [src]="pegarUrlImage(consultaVM.medico.foto)" alt="">
+                        </figure>
+                    </mat-list-item>
+                </div>
+                <div>
+                    <mat-list-item>
+                        <span matListItemTitle>Nome</span>
+                        <span matListItemLine>{{ consultaVM.medico.nome}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>CRM</span>
+                        <span matListItemLine>{{ consultaVM.medico.crm}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>Telefone</span>
+                        <span matListItemLine>{{ consultaVM.medico.telefone}}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>Email</span>
+                        <span matListItemLine>{{ consultaVM.medico.email}}</span>
+                    </mat-list-item>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+
+        <mat-label class="fw-semibold fs-4 p-2">Paciente</mat-label>
+        <mat-card class="p-0 mb-4">
+            <mat-card-content class="d-flex">
+                <mat-list>
+                    <mat-list-item>
+                        <span matListItemTitle>Nome</span>
+                        <span matListItemLine>{{ consultaVM.paciente.nome}}</span>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <span matListItemTitle>Email</span>
+                        <span matListItemLine>{{ consultaVM.paciente.email}}</span>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <span matListItemTitle>Telefone</span>
+                        <span matListItemLine>{{ consultaVM.paciente.telefone}}</span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <div class="d-flex flex-column gap-1">
+            <button mat-raised-button color="warn" (click)="gravar()">Excluir</button>
+            <button mat-raised-button color="accent" routerLink="/consultas/listar">Cancelar</button>
+        </div>
+    </div>
+</div>

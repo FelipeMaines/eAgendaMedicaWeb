@@ -26,15 +26,10 @@ export class ExcluirMedicoComponent implements OnInit{
 
     console.log(this.medico);
 
-    this.medicoService.excluir(this.medico.id).subscribe({
-      next: (res) => this.processarSucesso(res),
-      error: (err) => this.processarFalha(err)
-    })
-
     this.dataSource.data = this.medico.consultas;
   }
 
-  processarFalha(err: any): void {
+  processarErro(err: any): void {
     this.notification.erro(err)
   }
   processarSucesso(res: any): void {
@@ -42,11 +37,27 @@ export class ExcluirMedicoComponent implements OnInit{
     this.router.navigate(['/medicos/listar'])
   }
   
+  pegarUrlImage(fotoBase64: string) {
+    if (!fotoBase64)
+      return 'https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-user-icon-png-image_5045523.jpg';
+
+    const url = 'data:image/jpeg;base64,' + fotoBase64;
+    return url;
+  }
   
   
   public gravar(){
-
+    console.log('entrei excluir')
+    this.medicoService.excluir(this.medico.id).subscribe({
+      next: () => {
+        this.notification.sucesso('Medico Excluido com sucesso!')
+        this.router.navigate(['medicos/listar'])
+      },
+      error: (err) => this.processarErro(err),
+    })
   }
+
+
 }
 
 

@@ -54,6 +54,14 @@ export class ConsultaService {
         )
     }
 
+    public excluir(id: string){
+        return this.http.delete<VisualizarConsultaViewModel>(this.apiUrl + 'consulta/' + id)
+        .pipe(
+            map(res => this.processarDados(res)),
+            catchError(err => this.processarFalha(err))
+        )
+    }
+
     processarDados(resposta: any) {
         if (resposta.sucesso)
             return resposta.dados;

@@ -16,10 +16,6 @@ export class ListarConsultaComponent implements OnInit{
   constructor(private servicoConsulta: ConsultaService){}
 
   ngOnInit(): void {
-    this.consultas$ = this.servicoConsulta.selecionarTodos().pipe(
-      tap(x => console.log(x))
-    )
-
-    
+    this.consultas$ = this.servicoConsulta.selecionarTodos();
   }
 }
