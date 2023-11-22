@@ -1,6 +1,6 @@
 export class ListarCirurgiaViewModel {
     id: string;
-    nomeCirurgia: string;
+    nomeCirugia: string;
     data: string;
     horaInicio: string;
     horaTermino: string;
@@ -10,6 +10,6 @@ export class ListarCirurgiaViewModel {
         this.data = data;
         this.horaInicio = hi;
         this.horaTermino = ht;
-        this.nomeCirurgia = nomeCirurgia;
+        this.nomeCirugia = nomeCirurgia;
     }
 }

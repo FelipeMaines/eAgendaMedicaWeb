@@ -1,0 +1,74 @@
+<div class="container h-100 align-items-center justify-content-center">
+    <div class="row align-items-center justify-content-center">
+        <section class="col-sm col-lg-6 col-xxl-7">
+            <h1 class="d-flex align-items-center gap-4 fs-2 fw-semibold">
+                <mat-icon class="fs-3">library_add</mat-icon>
+                Cadastro de Consultas 
+            </h1>
+
+            <mat-card class="p-4">
+                <mat-card-content>
+
+                    <form class="d-grid gap-3 fs-6 p-3" [formGroup]="formCirurgia" (ngSubmit)="gravar()">
+                        <mat-label class="fs-5 fw-semibold mb-2">Informações</mat-label>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label for="titulo">Nome Cirurgia</mat-label>
+                            <input matInput type="text" data-cy="txtnomeCirurgia" formControlName="nomeCirugia">
+                            <mat-error class="text-white" *ngIf="nomeCirugia?.touched && nomeCirugia?.invalid">
+                                <span *ngIf="nomeCirugia?.errors?.['minlength']">O nome deve conter ao menos 3 caracteres</span>
+                                <span *ngIf="nomeCirugia?.errors?.['required']">A data é obrigatória.</span>
+
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label for="titulo">Data</mat-label>
+                            <input matInput type="date" data-cy="txtData" formControlName="data">
+                            <mat-error class="text-white" *ngIf="data?.touched && data?.invalid">
+                                <span *ngIf="data?.errors?.['required']">A data é obrigatória.</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label for="titulo">Horário de Início</mat-label>
+                            <input matInput type="time" data-cy="txtHoraInicio" formControlName="horaInicio">
+                            <mat-error class="text-white" *ngIf="horaInicio?.touched && horaInicio?.invalid">
+                                <span *ngIf="horaInicio?.errors?.['required']">Um horário de início é obrigatório.</span>
+                            </mat-error>
+                        </mat-form-field>
+
+
+                        <mat-form-field appearance="outline">
+                            <mat-label for="titulo">Horário de Término</mat-label>
+                            <input matInput type="time" data-cy="txtHoraTermino" formControlName="horaTermino">
+                            <mat-error class="text-white" *ngIf="horaTermino?.touched && horaTermino?.invalid">
+                                <span *ngIf="horaTermino?.errors?.['required']">Um horário de término é obrigatório.</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label for="titulo">Selecione o médico</mat-label>
+                            <mat-select formControlName="medicos" multiple>
+                                  <mat-option *ngFor="let medico of (medicos$ | async)" [value]="medico.id">{{medico.nome}}</mat-option>
+                              </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label for="titulo">Selecione o Paciente</mat-label>
+                            <mat-select formControlName="paciente">
+                                <mat-option *ngFor="let paciente of (pacientes$ | async)" [value]="paciente.id"> {{paciente.nome}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="accent">Gravar</button>
+                        <button mat-raised-button color="warn">Cancelar</button>
+
+                    </form>
+                </mat-card-content>
+            </mat-card>
+
+
+        </section>
+    </div>
+</div>

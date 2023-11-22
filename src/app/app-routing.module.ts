@@ -21,6 +21,11 @@ const routes: Routes = [
     path: 'consultas',
     loadChildren: () => import('../app/views/consulta/consulta.module')
     .then(m => m.ConsultaModule)
+  },
+  {
+    path: 'cirurgias',
+    loadChildren: () => import('../app/views/cirurgia/cirurgia.module')
+    .then(m => m.CirurgiaModule)
   }
 ];
 
