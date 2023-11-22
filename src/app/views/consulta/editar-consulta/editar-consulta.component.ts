@@ -11,6 +11,7 @@ import { FormConsultaViewModel } from '../models/form-consulta.view-model';
 import { ConsultaService } from '../services/consulta.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { VisualizarConsultaViewModel } from '../models/visualizar-consulta.view-model';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-editar-consulta',
@@ -38,22 +39,18 @@ export class EditarConsultaComponent extends BaseFormComponent implements OnInit
     this.formConsulta = this.formBuilder.group({
       medico: [this.consultaVM.medico.id, [Validators.required]],
       paciente: [this.consultaVM.paciente.id, [Validators.required]],
-      data: [this.consultaVM.data, [Validators.required]],
+      data: [formatDate(new Date(), "dd/MM/yyyy", "pt"), [Validators.required]],
       horaInicio: [this.consultaVM.horaInicio, [Validators.required]],
       horaTermino: [this.consultaVM.horaTermino, [Validators.required]]
     });
 
-
- 
-  //   console.log(this.consultaVM.data)
-    
-  //   this.formConsulta.patchValue({
-  //     medico: this.consultaVM.medico.id,
-  //     paciente: this.consultaVM.paciente.id,
-  //     data: this.consultaVM.data.toString().substring(0, 10),
-  //     horaInicio: this.consultaVM.horaInicio,
-  //     horaTermino: this.consultaVM.horaTermino
-  //   })
+    this.formConsulta.patchValue({
+      medico: this.consultaVM.medico.id,
+      paciente: this.consultaVM.paciente.id,
+      data: new Date(this.consultaVM.data),
+      horaInicio: this.consultaVM.horaInicio,
+      horaTermino: this.consultaVM.horaTermino
+    })
    }
 
   gravar(){

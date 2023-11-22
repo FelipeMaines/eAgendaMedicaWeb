@@ -32,18 +32,16 @@ export class InserirCirurgiaComponent extends BaseFormComponent implements OnIni
     this.pacientes$ = this.pacienteService.selecionarTodos();
 
     this.formCirurgia = this.formBuilder.group({
-      nomeCirugia: ['', Validators.required, Validators.minLength(3)],
-      medicos: [[], Validators.required, Validators.minLength(1)],
-      paciente: ['', Validators.required],
-      data: ['', Validators.required],
-      horaInicio: ['', Validators.required],
-      horaTermino: ['', Validators.required]
+      nomeCirugia: ['', [Validators.required, Validators.minLength(3)]],
+      medicos: [[], [Validators.required, Validators.minLength(1)]],
+      paciente: ['', [Validators.required]],
+      data: ['', [Validators.required]],
+      horaInicio: ['', [Validators.required]],
+      horaTermino: ['', [Validators.required]]
     })
   }
 
   gravar() {
-    console.log(this.formCirurgia.value)
-
     if (this.formCirurgia.invalid) {
       this.exibirMensagensValidacao(this.formCirurgia);
       return;
@@ -61,8 +59,7 @@ export class InserirCirurgiaComponent extends BaseFormComponent implements OnIni
     this.notificacao.aviso(err);
   }
 
-  processarSucesso(dados: FormCirurgiaViewModel)
-  {
+  processarSucesso(dados: FormCirurgiaViewModel) {
     this.notificacao.sucesso('Cirurgia marcada para a data: ' + dados.data)
     this.router.navigate(['cirurgias/listar'])
   }
@@ -70,19 +67,19 @@ export class InserirCirurgiaComponent extends BaseFormComponent implements OnIni
   get medico() {
     return this.formCirurgia.get('medicos');
   }
-  
+
   get paciente() {
     return this.formCirurgia.get('paciente');
   }
-  
+
   get data() {
     return this.formCirurgia.get('data');
   }
-  
+
   get horaInicio() {
     return this.formCirurgia.get('horaInicio');
   }
-  
+
   get horaTermino() {
     return this.formCirurgia.get('horaTermino');
   }

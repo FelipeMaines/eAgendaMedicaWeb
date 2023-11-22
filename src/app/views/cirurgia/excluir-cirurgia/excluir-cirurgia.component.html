@@ -1,0 +1,71 @@
+<div class="container-fluid align-items-center">
+    <div class="row gap-2">
+        <mat-list>
+            <mat-list-item>
+                <span matListItemTitle>Data</span>
+                <span matListItemLine>{{cirurgiaVM.data}}</span>
+            </mat-list-item>
+            <mat-list-item>
+                <span matListItemTitle>Horário</span>
+                <span matListItemLine>{{ cirurgiaVM.horaInicio }} - {{ cirurgiaVM.horaTermino}}</span>
+            </mat-list-item>
+        </mat-list>
+
+        
+        <mat-label class="fw-semibold fs-4 p-2 pl-0">Médicos</mat-label>
+        <div class="row gap-2 d-flex">
+            <mat-card *ngFor="let medico of cirurgiaVM.medicos" class="col-lg-5 col-md-12 col-sm-12">
+                <mat-card-content class="d-flex gap-1">
+                    <figure class="d-flex align-items-center justify-content-center flex-row gap-1 my-1">
+                        <img [src]="pegarUrlImage(medico.foto)" alt="foto medico" class="w-75 h-75">
+                    </figure>
+                    <mat-list>
+                        <mat-list-item>
+                            <span matListItemTitle>Nome</span>
+                            <span matListItemLine>{{ medico.nome}}</span>
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <span matListItemTitle>Telefone</span>
+                            <span matListItemLine>{{ medico.telefone}}</span>
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <span matListItemTitle>email</span>
+                            <span matListItemLine>{{ medico.email}}</span>
+                        </mat-list-item>
+                    </mat-list>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+
+        <mat-label class="fw-semibold fs-4 p-2">Paciente</mat-label>
+        <mat-card class="p-0 mb-4">
+            <mat-card-content class="d-flex">
+                <mat-list>
+                    <mat-list-item>
+                        <span matListItemTitle>Nome</span>
+                        <span matListItemLine>{{ cirurgiaVM.paciente.nome}}</span>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <span matListItemTitle>Email</span>
+                        <span matListItemLine>{{ cirurgiaVM.paciente.email}}</span>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <span matListItemTitle>Telefone</span>
+                        <span matListItemLine>{{ cirurgiaVM.paciente.telefone}}</span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <div class="d-flex flex-column gap-1">
+            <button mat-raised-button color="warn" (click)="gravar()">Excluir</button>
+            <button mat-raised-button color="accent" routerLink="/consultas/listar">Cancelar</button>
+        </div>
+
+    </div>
+</div>

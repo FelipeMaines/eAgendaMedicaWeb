@@ -9,7 +9,11 @@ import { CoreModule } from './core/core.module';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localeBr from '@angular/common/locales/pt';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
+registerLocaleData(localeBr, 'pt')
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+    {provide: MAT_DATE_LOCALE, useValue: 'pt'},
   ],
   bootstrap: [AppComponent]
 })

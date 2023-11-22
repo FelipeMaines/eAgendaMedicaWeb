@@ -6,7 +6,6 @@ import { CirurgiaService } from './services/cirurgia.service';
 import { InserirCirurgiaComponent } from './inserir-cirurgia/inserir-cirurgia.component';
 import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.component';
 import { ListarCirurgiaComponent } from './listar-cirurgia/listar-cirurgia.component';
-import { ExcluirCirurgiaComponent } from './exluir-cirurgia/exluir-cirurgia.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
@@ -20,6 +19,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MedicoService } from '../medico/services/medico.service';
 import { PacienteService } from '../paciente/services/paciente.service';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import { PacienteService } from '../paciente/services/paciente.service';
     InserirCirurgiaComponent,
     EditarCirurgiaComponent,
     ListarCirurgiaComponent,
-    ExcluirCirurgiaComponent
+    ExcluirCirurgiaComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,9 @@ import { PacienteService } from '../paciente/services/paciente.service';
     MatListModule,
     MatTableModule,
     SharedModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [CirurgiaService, MedicoService, PacienteService]
 })

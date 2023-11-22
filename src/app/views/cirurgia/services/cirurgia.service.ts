@@ -33,8 +33,8 @@ export class CirurgiaService{
             catchError(err => this.processarFalha(err)))
     }
 
-    public editar(cir: FormCirurgiaViewModel, id:string): Observable<FormCirurgiaViewModel>{
-        return this.http.put<FormCirurgiaViewModel>(this.apiUrl + 'cirurgia/' + id, cir)
+    public editar(cir: VisualizarCirurgiaViewModel, id:string): Observable<VisualizarCirurgiaViewModel>{
+        return this.http.put<VisualizarCirurgiaViewModel>(this.apiUrl + 'cirurgia/' + id, cir)
         .pipe(
             map(res => this.processarDados(res)),
             catchError(err => this.processarFalha(err)))

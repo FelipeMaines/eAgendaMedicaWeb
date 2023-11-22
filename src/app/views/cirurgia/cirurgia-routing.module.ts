@@ -1,9 +1,17 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule, inject } from '@angular/core';
+import { ActivatedRouteSnapshot, ResolveFn, RouterModule, Routes } from '@angular/router';
 import { InserirCirurgiaComponent } from './inserir-cirurgia/inserir-cirurgia.component';
 import { ListarCirurgiaComponent } from './listar-cirurgia/listar-cirurgia.component';
 import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.component';
-import { ExcluirCirurgiaComponent } from './exluir-cirurgia/exluir-cirurgia.component';
+import { FormCirurgiaViewModel } from './models/form-cirurgia.view-model';
+import { CirurgiaService } from './services/cirurgia.service';
+import { VisualizarCirurgiaViewModel } from './models/visualizar-cirurgia.view-model';
+import { tap } from 'rxjs';
+import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
+
+const visualizarResolver: ResolveFn<VisualizarCirurgiaViewModel> = (route: ActivatedRouteSnapshot) => {
+  return inject(CirurgiaService).selecionarPorId(route.paramMap.get('id')!);
+};
 
 const routes: Routes = [
   {
@@ -22,10 +30,12 @@ const routes: Routes = [
   {
     path: 'editar/:id',
     component: EditarCirurgiaComponent,
+    resolve: {cirurgia: visualizarResolver}
   },
   {
     path: 'excluir/:id',
     component: ExcluirCirurgiaComponent,
+    resolve: {cirurgia: visualizarResolver}
   },
 ];
 

@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExcluirCirurgiaComponent } from './exluir-cirurgia.component';
+import { ExcluirCirurgiaComponent } from './excluir-cirurgia.component';
 
-describe('ExluirCirurgiaComponent', () => {
+describe('ExcluirCirurgiaComponent', () => {
   let component: ExcluirCirurgiaComponent;
   let fixture: ComponentFixture<ExcluirCirurgiaComponent>;
 

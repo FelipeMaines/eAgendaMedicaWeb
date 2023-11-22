@@ -12,8 +12,9 @@
 
     <section class="row p-3 gap-2">
         <mat-card *ngFor="let cirurgia of (cirurgiaVM$ | async)" class="col-sm-12 col-md-12 col-lg-5 col-xxl-5 p-2 ">
-            <mat-card-header class="fs-3">Data: {{ cirurgia.data}}</mat-card-header>
+            <mat-card-header class="fs-3">{{cirurgia.nomeCirugia}}</mat-card-header>
             <mat-card-content class="mt-2 gap-0">
+                <h2 class="my-1">Data: {{ cirurgia.data}}</h2>
 
                 <div class="d-flex flex-column p-0 mt-2 gap-0">
                     <div class="d-flex">
