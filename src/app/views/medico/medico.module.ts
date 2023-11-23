@@ -18,6 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatInputModule,
     MatListModule,
     MatTableModule,
+    MatSelectModule,
     SharedModule,
   ],
   providers: [MedicoService]

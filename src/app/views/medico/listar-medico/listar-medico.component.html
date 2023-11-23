@@ -1,21 +1,33 @@
 <div class="container-fluid align-items-center">
 
-    <h1 class="row align-items-center gap-4 fs-2 fw-semibold my-2 col-sm ms-2">
-        <mat-icon class="fs-3">menu</mat-icon>
-        Medicos Cadastrados
-
-    </h1>
-    <button mat-raised-button color="accent" routerLink="/medicos/inserir" class="p-4 mx-4 my-1"><mat-icon>add</mat-icon> Adicionar</button>
-
+    <div class="d-flex gap-2">
+        <h1 class="row align-items-center gap-4 fs-2 fw-semibold my-2 col-sm ms-2">
+            <mat-icon class="fs-3">menu</mat-icon>
+            Medicos Cadastrados
+    
+        </h1>
+        <button mat-raised-button color="accent" routerLink="/medicos/inserir" class="p-4  ml-5 my-1"><mat-icon>add</mat-icon> Adicionar</button>
+        <mat-form-field>
+            <mat-label>Filtro Horas Trabalhadas</mat-label>
+            <mat-select [(value)]="filtro" (selectionChange)="onSelectionChange($event.value)">
+              <mat-option [value]="opcao0">Sem filtro</mat-option>
+              <mat-option [value]="opcao1">30 dias</mat-option>
+              <mat-option [value]="opcao2">90 dias</mat-option>
+              <mat-option [value]="opcao3">180 dias</mat-option>
+              <mat-option [value]="opcao4">360 dias</mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+    </div>
+  
 
 
     <section class="row p-3 gap-2 d-flex justify-content-center">
         <mat-card *ngFor="let medico of (medicos$ | async)" class="col-sm-12 col-md-12 col-lg-5 col-xxl-5 p-2 ">
             <mat-card-header class="fs-3">Nome: {{ medico.nome}}</mat-card-header>
             <mat-card-content class="mt-2 gap-0">
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-center gap-2">
                     <div class="row col-lg-4 col-md-6 col-sm-12">
-
                         <figure class="d-none d-lg-block col-auto align-items-center p-2">
                             <img [src]="pegarUrlImage(medico.foto)" class="img-fluid mw-100" alt="">
                         </figure>

@@ -25,6 +25,16 @@ export class MedicoService{
                 map(this.processarDados), catchError(this.processarFalha));
     }
 
+    public filtrarTopDezPorData(data: string) : Observable<ListarMedicoViewModel[]>{
+        const url = this.apiUlr + 'Medico/Data?time=' + encodeURIComponent(data);
+
+        return this.http.get<ListarMedicoViewModel[]>(url)
+          .pipe(
+            map(this.processarDados),
+            catchError(this.processarFalha)
+          );
+    }
+
     public inserir(medicoVm: FormMedicoViewModel): Observable<FormMedicoViewModel>{
         return this.http.post<FormMedicoViewModel>(this.apiUlr + 'medico', medicoVm)
         .pipe(
