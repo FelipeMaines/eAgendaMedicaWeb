@@ -21,7 +21,6 @@ export class AuthService {
     public autenticarUsuario(usuario: AutenticarUsuarioViewModel): Observable<TokenViewModel>{
         var resultado = this.http.post(this.apiUrl + 'contas/autenticar', usuario, this.obterHeader())
         .pipe(map(this.processarDados), catchError(this.processarFalha));
-        debugger;
       return resultado;
     }
 

@@ -1,32 +1,38 @@
 <div class="container-fluid align-items-center">
 
-    <h1 class="row align-items-center gap-4 fs-2 fw-semibold my-2 col-sm ms-2">
-        <mat-icon class="fs-3">menu</mat-icon>
-        Pacientes Cadastrados
-    </h1>
+    <div class="d-flex gap-2">
+        <h1 class="row align-items-center gap-4 fs-2 fw-semibold my-2 col-sm ms-2">
+            <mat-icon class="fs-3">menu</mat-icon>
+            Pacientes Cadastrados
+        </h1>
+        <button mat-raised-button color="accent" routerLink="/pacientes/inserir"
+        class="p-4 mx-4 my-1"><mat-icon>add</mat-icon> Adicionar</button>
+    </div>
 
-    <button mat-raised-button color="accent" routerLink="/pacientes/inserir" class="p-4 mx-4 my-1"><mat-icon>add</mat-icon> Adicionar</button>
 
 
-    
-        <section class="row p-3 gap-2 d-flex justify-content-center">
-            <mat-card *ngFor="let paciente of (pacientes$ | async)" class="col-sm-12 col-md-12 col-lg-4 col-xxl-5 p-3 ">
-                <mat-card-header class="fs-3">Nome: {{ paciente.nome}}</mat-card-header>
-                <mat-card-content class="mt-2 gap-0">
-                    <div class="d-flex flex-column p-0 mt-2 gap-0">
-                        <h2>Email: {{ paciente.email }}</h2>
-                        <h2>Telefone: {{ paciente.telefone }}</h2>
-                    </div>
-                    <mat-card-footer>
-                        <p>Id: {{ paciente.id }}</p>
-                    </mat-card-footer>
 
-                    <div class="d-flex flex-row gap-2">
-                        <button mat-raised-button color="accent" routerLink="/pacientes/editar/{{ paciente.id }}">Editar</button>
-                        <button mat-raised-button color="warn" routerLink="/pacientes/excluir/{{ paciente.id }}">Excluir</button>
-                    </div>
-                </mat-card-content>
 
-              </mat-card>
-        </section>
+    <section class="row p-3 gap-2 d-flex justify-content-center">
+        <mat-card *ngFor="let paciente of (pacientes$ | async)" class="col-sm-12 col-md-12 col-lg-4 col-xxl-5 p-3 ">
+            <mat-card-header class="fs-3">Nome: {{ paciente.nome}}</mat-card-header>
+            <mat-card-content class="mt-2 gap-0">
+                <div class="d-flex flex-column p-0 mt-2 gap-0">
+                    <h2>Email: {{ paciente.email }}</h2>
+                    <h2>Telefone: {{ paciente.telefone }}</h2>
+                </div>
+                <mat-card-footer>
+                    <p>Id: {{ paciente.id }}</p>
+                </mat-card-footer>
+
+                <div class="d-flex flex-row gap-2">
+                    <button mat-raised-button color="accent"
+                        routerLink="/pacientes/editar/{{ paciente.id }}">Editar</button>
+                    <button mat-raised-button color="warn"
+                        routerLink="/pacientes/excluir/{{ paciente.id }}">Excluir</button>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+    </section>
 </div>

@@ -12,14 +12,14 @@ export class LoginGuard implements CanActivate {
   ) { }
 
   canActivate(): Observable<boolean> {
-    console.log('auth')
+    console.log('login')
 
     return this.usuarioService.usuarioLogado.pipe(
       map(usuarioLogado => {
         if (!usuarioLogado)
           return true;
 
-        this.router.navigate(['/dashboard']);
+        // this.router.navigate(['/dashboard']);
         return false;
       })
     )

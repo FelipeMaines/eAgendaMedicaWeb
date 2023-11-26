@@ -5,12 +5,13 @@ import { ListarPacienteViewModel } from "../models/listar-paciente.view-model";
 import { Observable, catchError, map, throwError } from "rxjs";
 import { FormPacienteViewModel } from "../models/form-paciente.view-model";
 import { VisualizarPacienteViewModel } from "../models/visualizar-paciente.view-model";
+import { LocalStorageService } from "src/app/auth/services/local-storage.service";
 
 @Injectable()
 export class PacienteService {
     apiUlr: string = environment.apiUrl;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private localStorageService: LocalStorageService) { }
 
     public selecionarTodos(): Observable<ListarPacienteViewModel[]> {
         return this.http.get<ListarPacienteViewModel[]>(this.apiUlr + 'paciente', this.obterHeadersAutorizacao())
@@ -20,7 +21,7 @@ export class PacienteService {
 
     public selecionarPorIdForm(id: string): Observable<FormPacienteViewModel> {
         console.log('servico selecionar form' + '  '+ id)
-        return this.http.get<FormPacienteViewModel>(this.apiUlr + 'paciente/' + id)
+        return this.http.get<FormPacienteViewModel>(this.apiUlr + 'paciente/' + id, this.obterHeadersAutorizacao())
         .pipe(
             map(res => this.processarDados(res)),
             catchError(err => this.processarFalha(err))
@@ -28,7 +29,7 @@ export class PacienteService {
     }
 
     public excluir(id: string): Observable<VisualizarPacienteViewModel>{
-        return this.http.delete(this.apiUlr + 'paciente/' + id)
+        return this.http.delete(this.apiUlr + 'paciente/' + id, this.obterHeadersAutorizacao())
         .pipe(
             map((res) => this.processarDados(res)),
             catchError((err) => this.processarFalha(err))
@@ -36,7 +37,7 @@ export class PacienteService {
     }
 
     public selecionarPorId(id: string): Observable<VisualizarPacienteViewModel> {
-        return this.http.get<FormPacienteViewModel>(this.apiUlr + 'paciente/' + id)
+        return this.http.get<FormPacienteViewModel>(this.apiUlr + 'paciente/' + id, this.obterHeadersAutorizacao())
         .pipe(
             map(res => this.processarDados(res)),
             catchError(err => this.processarFalha(err))
@@ -51,9 +52,7 @@ export class PacienteService {
     }
 
     public editar(paciente: FormPacienteViewModel, id: string): Observable<FormPacienteViewModel>{
-        console.log('editar');
-        console.log(paciente);
-        return this.http.put<FormPacienteViewModel>(this.apiUlr + 'paciente/' + id, paciente)
+        return this.http.put<FormPacienteViewModel>(this.apiUlr + 'paciente/' + id, paciente, this.obterHeadersAutorizacao())
         .pipe(
             map(res => this.processarDados(res)),
             catchError(err => this.processarFalha(err))
@@ -72,12 +71,12 @@ export class PacienteService {
     }
 
     private obterHeadersAutorizacao() {
-        const token = environment.apiUrl;
-    
+        const token = this.localStorageService.obterTokenUsuario();
+
         return {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGI1YjI4OC0zYzlhLTRjZTQtYzM3Ny0wOGRiZWUxMjMwMTAiLCJlbWFpbCI6ImZlbGlwYW9AZ21haWwuY29tIiwidW5pcXVlX25hbWUiOiJmZWxpcGFvIiwiZ2l2ZW5fbmFtZSI6ImZlbGlwYW8iLCJuYmYiOjE3MDA5NTY3NjYsImV4cCI6MTcwMTM4ODc2NiwiaWF0IjoxNzAwOTU2NzY2LCJpc3MiOiJlQWdlbmRhTWVkaWNhIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.-n4W32dGUvT15apb9O3QdKDCXb4r21XeR-sCA7i03t0`
+            'Authorization': `Bearer ${token}`
           })
         }
       }

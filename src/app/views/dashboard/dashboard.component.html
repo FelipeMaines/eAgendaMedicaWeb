@@ -9,7 +9,7 @@
             <mat-card class="mt-2">
                 <mat-card-content class="p-2 p-md-4 d-grid gap-3">
                     <h2 class="fs-4">Olá,
-                        <span>Nome do usuario (IMPLEMENTAR)</span>
+                        <span class=" fw-semibold fs-3">{{ (usuarioLogado$ | async)?.nome}}</span>
                     </h2>
 
                     <section class="fs-6 fw-light" aria-label="Introdução do usuário">
@@ -17,15 +17,24 @@
                             <p>Este é o DashBoard, através daqui, você pode acessar as funcionalidades da aplicação.</p>
                             <p>Use a barra lateral da esquerda para acessar todas as funcionalidades</p>
 
-                            <div>
-                                <h2>Deseja comecar marcando uma consulta?</h2>
-                                <a mat-flat-button
-                                class="fs-6 col py-1"
-                                routerLink="/pacientes"
-                                color="accent"
+                            <h2>Qual atividade deseja fazer?</h2>
+                            <div class="gap-3 d-flex justify-content-center">
+
+                                <a mat-flat-button class="fs-6 py-1" routerLink="/pacientes" color="accent"
+                                    role="button">
+                                    Paciente
+                                </a>
+                                <a mat-flat-button class="fs-6 py-1" routerLink="/medicos" color="accent"
+                                    role="button">
+                                    Medico</a>
+                                <a mat-flat-button class="fs-6 py-1" routerLink="/consultas" color="accent"
+                                    role="button">
+                                    Consulta
+                                </a>
+                                <a mat-flat-button class="fs-6 py-1" routerLink="/cirurgias" color="accent"
                                 role="button">
-                                Cadastre sua Consulta!
-                              </a>
+                                Cirurgia
+                            </a>
                             </div>
                         </div>
                     </section>
@@ -34,7 +43,8 @@
         </section>
 
         <figure class="d-none d-lg-block col-auto align-items-center p-3">
-            <img src="../../../assets/medicoDashBoard1.webp" class="img-fluid mw-100" height="420" alt="Imagem ilustrando uma pessoa interagindo com a aplicação">
+            <img src="../../../assets/medicoDashBoard1.webp" class="img-fluid mw-100" height="420"
+                alt="Imagem ilustrando uma pessoa interagindo com a aplicação">
         </figure>
     </div>
 </div>

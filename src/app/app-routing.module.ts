@@ -15,18 +15,18 @@ const routes: Routes = [
   {
     path: 'conta/autenticar',
     component: LoginComponent,
-    
+    canActivate: [LoginGuard]
   },
   {
     path: 'conta/registrar',
     component: RegistroComponent,
-    
+    canActivate: [LoginGuard]
   },
   {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     component: DashboardComponent,
-    canActivate: [AuthGuard]
-  },
+    },
 
   {
     path: 'pacientes',

@@ -5,9 +5,10 @@ import { TokenViewModel, UsuarioTokenViewModel } from "../models/token.view-mode
 export class LocalStorageService {
 
     public salvarDadosLocaisUsuario(resposta: TokenViewModel): void {
+        debugger;
         this.salvarTokenUsuario(resposta.chave);
         this.salvarDataExpiracaoToken(resposta.dataExpiracao);
-        this.salvarUsuario(resposta.usuarioToken);
+        this.salvarUsuario(resposta.usuario);
     }
 
     public salvarTokenUsuario(token: string) {

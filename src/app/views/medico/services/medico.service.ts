@@ -5,12 +5,13 @@ import { ListarMedicoViewModel } from "../models/listar-medico.view-model";
 import { Observable, catchError, map, throwError } from "rxjs";
 import { FormMedicoViewModel } from "../models/form-medico.view-model";
 import { VisualizarMedicoViewModel } from "../models/visualizar-medico.view-model";
+import { LocalStorageService } from "src/app/auth/services/local-storage.service";
 
 @Injectable()
 export class MedicoService{
     apiUlr: string = environment.apiUrl;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private localStorageServcie: LocalStorageService) { }
 
     public selecionarTodos(): Observable<ListarMedicoViewModel[]> {
         
@@ -20,7 +21,7 @@ export class MedicoService{
     }
 
     public selecionarPorId(id: string): Observable<VisualizarMedicoViewModel> {
-        return this.http.get<VisualizarMedicoViewModel>(this.apiUlr + 'medico/' + id)
+        return this.http.get<VisualizarMedicoViewModel>(this.apiUlr + 'medico/' + id, this.obterHeadersAutorizacao())
             .pipe(
                 map(this.processarDados), catchError(this.processarFalha));
     }
@@ -28,7 +29,7 @@ export class MedicoService{
     public filtrarTopDezPorData(data: string) : Observable<ListarMedicoViewModel[]>{
         const url = this.apiUlr + 'Medico/Data?time=' + encodeURIComponent(data);
 
-        return this.http.get<ListarMedicoViewModel[]>(url)
+        return this.http.get<ListarMedicoViewModel[]>(url, this.obterHeadersAutorizacao())
           .pipe(
             map(this.processarDados),
             catchError(this.processarFalha)
@@ -43,7 +44,7 @@ export class MedicoService{
 
     public editar(medicoVM: FormMedicoViewModel, id: string): Observable<FormMedicoViewModel>
     {
-        return this.http.put<FormMedicoViewModel>(this.apiUlr + 'medico/' + id, medicoVM)
+        return this.http.put<FormMedicoViewModel>(this.apiUlr + 'medico/' + id, medicoVM, this.obterHeadersAutorizacao())
         .pipe(
             map(res => this.processarDados(res)),
             catchError(err => this.processarFalha(err))
@@ -51,7 +52,7 @@ export class MedicoService{
     }
 
     public excluir(id: string){
-        return this.http.delete(this.apiUlr + 'medico/' + id)
+        return this.http.delete(this.apiUlr + 'medico/' + id, this.obterHeadersAutorizacao())
         .pipe(
             map(res => this.processarDados(res)),
             catchError(err => this.processarFalha(err))
@@ -72,12 +73,12 @@ export class MedicoService{
     }
 
     private obterHeadersAutorizacao() {
-        const token = environment.apiUrl;
-    
+        const token = this.localStorageServcie.obterTokenUsuario();
+
         return {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGI1YjI4OC0zYzlhLTRjZTQtYzM3Ny0wOGRiZWUxMjMwMTAiLCJlbWFpbCI6ImZlbGlwYW9AZ21haWwuY29tIiwidW5pcXVlX25hbWUiOiJmZWxpcGFvIiwiZ2l2ZW5fbmFtZSI6ImZlbGlwYW8iLCJuYmYiOjE3MDA5NTY3NjYsImV4cCI6MTcwMTM4ODc2NiwiaWF0IjoxNzAwOTU2NzY2LCJpc3MiOiJlQWdlbmRhTWVkaWNhIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.-n4W32dGUvT15apb9O3QdKDCXb4r21XeR-sCA7i03t0`
+            'Authorization': `Bearer ${token}`
           })
         }
       }

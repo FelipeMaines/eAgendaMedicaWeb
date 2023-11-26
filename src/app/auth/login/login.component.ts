@@ -55,7 +55,6 @@ export class LoginComponent extends BaseFormComponent implements OnInit{
 
     this.authService.autenticarUsuario(this.autenticarVM).subscribe({
       next: (log) => {
-        debugger;
         this.processarSucesso(log)
       },
       error: (err) => this.processarErro(err)
@@ -64,7 +63,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit{
 
   private processarSucesso(loginRealizado: TokenViewModel) {
     this.localStorageService.salvarDadosLocaisUsuario(loginRealizado);
-    this.usuarioService.logarUsuario(loginRealizado.usuarioToken);
+    this.usuarioService.logarUsuario(loginRealizado.usuario);
     this.router.navigate(['/dashboard']);
   }
 

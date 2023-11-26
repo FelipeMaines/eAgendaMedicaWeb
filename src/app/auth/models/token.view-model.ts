@@ -2,13 +2,13 @@ export class TokenViewModel {
     chave: string;
     dataExpiracao: Date;
   
-    usuarioToken: UsuarioTokenViewModel;
+    usuario: UsuarioTokenViewModel;
 
     constructor(chave: string, data: Date, token: UsuarioTokenViewModel) 
     {
         this.chave = chave;
         this.dataExpiracao = data;
-        this.usuarioToken = token;
+        this.usuario = token;
     }
   }
   
