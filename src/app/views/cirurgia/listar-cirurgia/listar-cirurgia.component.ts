@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListarCirurgiaViewModel } from '../models/listar-cirurgia.view-model';
 import { CirurgiaService } from '../services/cirurgia.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-listar-cirurgia',
@@ -15,7 +15,7 @@ export class ListarCirurgiaComponent implements OnInit{
   constructor(private cirurgiaService: CirurgiaService){}
 
   ngOnInit(): void {
-   this.cirurgiaVM$ = this.cirurgiaService.selecionarTodos();
+   this.cirurgiaVM$ = this.cirurgiaService.selecionarTodos()
   }
 
 }

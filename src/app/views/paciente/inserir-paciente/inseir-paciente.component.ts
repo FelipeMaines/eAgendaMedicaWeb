@@ -5,6 +5,8 @@ import { FormPacienteViewModel } from '../models/form-paciente.view-model';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-inseir-paciente',
@@ -82,6 +84,7 @@ export class InseirPacienteComponent extends BaseFormComponent implements OnInit
   get telefoneFamiliar() {
     return this.formPaciente.get('telefoneFamiliar');
   }
-
+  
+  
  
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarModule } from './navbar/navbar.module';
 import { NotificationService } from './services/notification.service';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
+import { UsuarioService } from './services/usuario.service';
 
 
 
@@ -21,7 +22,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/mater
         horizontalPosition: 'right',
       }
     },
-
+    UsuarioService,
     NotificationService]
 })
 export class CoreModule { }

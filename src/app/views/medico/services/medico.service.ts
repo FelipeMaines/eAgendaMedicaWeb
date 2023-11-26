@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment.development";
 import { ListarMedicoViewModel } from "../models/listar-medico.view-model";
@@ -14,7 +14,7 @@ export class MedicoService{
 
     public selecionarTodos(): Observable<ListarMedicoViewModel[]> {
         
-        return this.http.get<ListarMedicoViewModel[]>(this.apiUlr + 'medico')
+        return this.http.get<ListarMedicoViewModel[]>(this.apiUlr + 'medico', this.obterHeadersAutorizacao())
             .pipe(
                 map(this.processarDados), catchError(this.processarFalha));
     }
@@ -36,7 +36,7 @@ export class MedicoService{
     }
 
     public inserir(medicoVm: FormMedicoViewModel): Observable<FormMedicoViewModel>{
-        return this.http.post<FormMedicoViewModel>(this.apiUlr + 'medico', medicoVm)
+        return this.http.post<FormMedicoViewModel>(this.apiUlr + 'medico', medicoVm, this.obterHeadersAutorizacao())
         .pipe(
             map(this.processarDados), catchError(this.processarFalha));
     }
@@ -70,5 +70,16 @@ export class MedicoService{
     private processarFalha(resposta: any) {
         return throwError(() => new Error(resposta.error.erros[0]));
     }
+
+    private obterHeadersAutorizacao() {
+        const token = environment.apiUrl;
+    
+        return {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGI1YjI4OC0zYzlhLTRjZTQtYzM3Ny0wOGRiZWUxMjMwMTAiLCJlbWFpbCI6ImZlbGlwYW9AZ21haWwuY29tIiwidW5pcXVlX25hbWUiOiJmZWxpcGFvIiwiZ2l2ZW5fbmFtZSI6ImZlbGlwYW8iLCJuYmYiOjE3MDA5NTY3NjYsImV4cCI6MTcwMTM4ODc2NiwiaWF0IjoxNzAwOTU2NzY2LCJpc3MiOiJlQWdlbmRhTWVkaWNhIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.-n4W32dGUvT15apb9O3QdKDCXb4r21XeR-sCA7i03t0`
+          })
+        }
+      }
 
 }

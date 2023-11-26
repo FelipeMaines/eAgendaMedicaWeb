@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeBr from '@angular/common/locales/pt';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { AuthModule } from './auth/auth.module';
 
 registerLocaleData(localeBr, 'pt')
 
@@ -24,6 +25,7 @@ registerLocaleData(localeBr, 'pt')
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
+    AuthModule,
     HttpClientModule,
     DashboardModule
   ],

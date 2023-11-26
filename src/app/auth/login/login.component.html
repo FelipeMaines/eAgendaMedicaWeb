@@ -1,0 +1,48 @@
+<div class="container-fluid h-100">
+
+  <div class="row gap-3 h-100 justify-content-center align-items-center">
+    <section aria-label="Formulário de Login" class="d-grid gap-2 col-sm col-lg-4">
+      <mat-card class="p-md-4">
+        <mat-card-content>
+          <form class="d-grid gap-2 fs-6 p-3" [formGroup]="form" (ngSubmit)="Realizarlogin()">
+            <!-- <img src="../../../assets/medicoDashBoard1.webp" width="150px" class="my-2"> -->
+            <mat-form-field appearance="outline">
+              <mat-label>Endereço de email</mat-label>
+              <input matInput data-cy="txtlogin" formControlName="login" type="text" placeholder="tiagao">
+              <mat-error class="text-white" *ngIf="login?.touched && login?.invalid">
+                <span *ngIf="login?.errors?.['required']">O login precisa ser preenchido.</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Senha</mat-label>
+              <input matInput data-cy="txtSenha" formControlName="senha" type="password">
+              <mat-error class="text-white" *ngIf="senha?.touched && senha?.invalid">
+                <span *ngIf="senha?.errors?.['required']">A senha precisa ser preenchida.</span>
+                <span *ngIf="senha?.errors?.['minlength']">A senha deve conter no mínimo 6 caracteres.</span>
+              </mat-error>
+            </mat-form-field>
+
+            <div class="row px-2 gap-2 mt-2">
+              <button mat-stroked-button color="accent" class="col" type="button" routerLink="/conta/registrar">
+                <mat-icon>person_add</mat-icon>
+                Registro
+              </button>
+              <a mat-flat-button data-cy="btnEntrar" color="accent" class="col" (click)="Realizarlogin()" role="button"
+                [disabled]="this.form.touched && this.form.invalid">
+                <mat-icon>login</mat-icon>
+                Entrar
+              </a>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <figure class="d-none d-lg-block col-auto align-items-center p-3">
+      <img src="../../../assets/Mobile-login.jpg" class="img-fluid mw-100" height="420"
+        alt="Imagem ilustrando uma pessoa interagindo com a aplicação">
+    </figure>
+  </div>
+
+</div>
