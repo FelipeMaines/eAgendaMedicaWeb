@@ -8,7 +8,7 @@ import { NavbarModule } from './core/navbar/navbar.module';
 import { CoreModule } from './core/core.module';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { DashboardModule } from './views/dashboard/dashboard.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeBr from '@angular/common/locales/pt';
 import { MAT_DATE_LOCALE } from '@angular/material/core';

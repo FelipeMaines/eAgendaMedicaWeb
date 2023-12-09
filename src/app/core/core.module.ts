@@ -4,17 +4,23 @@ import { NavbarModule } from './navbar/navbar.module';
 import { NotificationService } from './services/notification.service';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import { UsuarioService } from './services/usuario.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderService } from './loader/services/loarder.service';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoaderComponent
+  ],
   imports: [
     NavbarModule,
     MatSnackBarModule
   ],
-  exports: [NavbarModule],
+  exports: [NavbarModule, LoaderComponent],
   providers: [
+    UsuarioService,
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {
@@ -22,7 +28,8 @@ import { UsuarioService } from './services/usuario.service';
         horizontalPosition: 'right',
       }
     },
-    UsuarioService,
-    NotificationService]
+    NotificationService,
+    LoaderService
+    ]
 })
 export class CoreModule { }

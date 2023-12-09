@@ -1,4 +1,7 @@
 <app-navbar>
+  <div id="loader" class="myloader" *ngIf="estaCarregando | async">
+    <app-loader></app-loader>
+  </div>
   <router-outlet></router-outlet>
 </app-navbar>
 
