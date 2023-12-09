@@ -3,7 +3,7 @@
         (closed)="events.push('close!')" >
         <mat-toolbar class="d-flex align-items-center justify-content-center "  routerLink="dashboard">Menu</mat-toolbar>
         <mat-nav-list class="p-2">
-            <a mat-list-item routerLink="">Painel de Controle</a>
+            <a mat-list-item routerLink="/dashboard">Painel de Controle</a>
             <a mat-list-item routerLink="/medicos/listar"><mat-icon fontIcon="emoji_people"></mat-icon><span class="ms-2"></span>Medicos</a>
             <a mat-list-item routerLink="/pacientes/listar"><mat-icon fontIcon="elderly"></mat-icon><span class="ms-2"></span>Pacientes</a>
             <a mat-list-item routerLink="/cirurgias/listar"><mat-icon fontIcon="vaccines"></mat-icon><span class="ms-2"></span>Cirurgias</a>
@@ -17,7 +17,7 @@
             <mat-toolbar>
                 <button mat-icon-button class="example-icon" (click)="sidenav.toggle()"
                     aria-label="Example icon-button with menu icon">
-                    <mat-icon>menu</mat-icon>
+                    <mat-icon routerLink="/dashboard">menu</mat-icon>
                 </button>
                 <span>eAgenda Medica</span>
                 <span class="example-spacer"></span>

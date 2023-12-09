@@ -7,38 +7,43 @@
             </h1>
 
             <mat-card class="mt-2">
-                <mat-card-content class="p-2 p-md-4 d-grid gap-3">
-                    <h2 class="fs-4">Olá,
-                        <span class=" fw-semibold fs-3">{{ (usuarioLogado$ | async)?.nome}}</span>
-                    </h2>
-
-                    <section class="fs-6 fw-light" aria-label="Introdução do usuário">
-                        <div class="fs-6 row justify-content-center text-center">
-                            <p>Este é o DashBoard, através daqui, você pode acessar as funcionalidades da aplicação.</p>
-                            <p>Use a barra lateral da esquerda para acessar todas as funcionalidades</p>
-
-                            <h2>Qual atividade deseja fazer?</h2>
-                            <div class="gap-3 d-flex justify-content-center">
-
-                                <a mat-flat-button class="fs-6 py-1" routerLink="/pacientes" color="accent"
-                                    role="button">
-                                    Paciente
-                                </a>
-                                <a mat-flat-button class="fs-6 py-1" routerLink="/medicos" color="accent"
-                                    role="button">
-                                    Medico</a>
-                                <a mat-flat-button class="fs-6 py-1" routerLink="/consultas" color="accent"
-                                    role="button">
-                                    Consulta
-                                </a>
-                                <a mat-flat-button class="fs-6 py-1" routerLink="/cirurgias" color="accent"
-                                role="button">
-                                Cirurgia
-                            </a>
-                            </div>
+                <div class="row">
+                    <mat-card-content class="p-2 p-md-4 d-grid gap-3">
+                        <div class="row mx-1">
+                            <h2 class="fs-4">Olá,
+                                <span class=" fw-semibold fs-3">{{ (usuarioLogado$ | async)?.nome}}</span>
+                            </h2>
                         </div>
-                    </section>
-                </mat-card-content>
+                        <section class="fs-6 fw-light" aria-label="Introdução do usuário">
+                            <div class="fs-6 row justify-content-center text-center p-1">
+                                <p>Este é o DashBoard, através daqui, você pode acessar as funcionalidades da aplicação.
+                                </p>
+                                <p>Use a barra lateral da esquerda para acessar todas as funcionalidades</p>
+
+                                <h2>Qual atividade deseja fazer?</h2>
+                                <div class="row gap-3 d-flex justify-content-center">
+
+                                    <a mat-flat-button class="fs-6 py-1" routerLink="/pacientes" color="accent"
+                                        role="button" class="col-sm-12 col-lg-3 col-md-2">
+                                        Paciente
+                                    </a>
+                                    <a mat-flat-button class="fs-6 py-1" routerLink="/medicos" color="accent"
+                                        role="button" class="col-sm-12 col-lg-3 col-md-2">
+                                        Medico</a>
+                                    <a mat-flat-button class="fs-6 py-1" routerLink="/consultas" color="accent"
+                                        role="button" class="col-sm-12 col-lg-3 col-md-2">
+                                        Consulta
+                                    </a>
+                                    <a mat-flat-button class="fs-6 py-1" routerLink="/cirurgias" color="accent"
+                                        role="button" class="col-sm-12 col-lg-3 col-md-2">
+                                        Cirurgia
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </mat-card-content>
+                </div>
+
             </mat-card>
         </section>
 
