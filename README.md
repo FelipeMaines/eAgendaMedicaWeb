@@ -1,27 +1,71 @@
-# EAgendaMedicaWeb
+# e-Agenda Médica
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+Bem-vindo(a) ao e-Agenda Médica, uma solução web para a gestão eficiente de cronogramas em clínicas médicas. Desenvolvido como projeto final da Academia do Programador 2023, este sistema visa otimizar o agendamento de consultas e cirurgias, proporcionando uma experiência simplificada e segura.
 
-## Development server
+## Tecnologias e Ferramentas de Frontend:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular: Framework JavaScript para construção do frontend da aplicação.
+- Bootstrap: Biblioteca de design e estilos para facilitar a criação de interfaces responsivas.
+- TypeScript: Superset do JavaScript que adiciona tipagem estática ao código.
+- HTML: Linguagem de marcação utilizada para estruturar o conteúdo da aplicação.
+- Sass: Linguagem para estilizar a página.
+- Angular Material: Biblioteca para auxiliar nos componentes da página.
 
-## Code scaffolding
+## Tecnologias e Ferramentas de Backend:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- C#: Linguagem de programação principal para o desenvolvimento do backend.
+- Entity Framework Core: Ferramenta de mapeamento objeto-relacional (ORM) para interação com o banco de dados.
+- SQL Server: Sistema de gerenciamento de banco de dados relacional utilizado para armazenar dados.
+- Visual Studio: Ambiente no qual foi desenvolvido o projeto do backend.
+- .NET 6.0: Framework no qual foi desenvolvido o projeto do backend.
+- ASP.NET: Plataforma da Microsoft para o desenvolvimento de aplicações Web.
 
-## Build
+## Instalação
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Pré-requisitos
+Antes de iniciar, certifique-se de atender aos seguintes requisitos:
+- .NET 6 SDK,
+- Node.js, npm, e
+- SQL Server.
 
-## Running unit tests
+### Configurando o Back-End
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Entre no projeto: https://github.com/FelipeMaines/EAgendaMedicaAPI
 
-## Running end-to-end tests
+1. Clone o repositório.
+2. No Visual Studio, abra o Package Manager Console e selecione como projeto padrão:
+    ```
+    Infra/Orm/EAgendaMedica.Infra.Orm
+    ```
+3. Execute os seguintes comandos:
+    ```powershell
+    Add-Migration CloneMigration
+    Update-Database
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Build e Execute a Aplicação:
 
-## Further help
+- Aperte F5 ou rode o projeto.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Arrumando o Front-End
+
+1. Clone o repositório [eAgendaMedicaWeb](https://github.com/FelipeMaines/eAgendaMedicaWeb).
+2. Abra o Visual Studio Code.
+3. Inicie um novo terminal.
+4. Execute o seguinte comando:
+    ```bash
+    npm install
+    ```
+
+### Configurando a URL
+
+1. Vá para `src/environments/environment.development.ts`.
+2. Deixe a `ApiUrl` como:
+    ```typescript
+    apiUrl: 'https://localhost:7181/api/'
+    ```
+
+### Para Iniciar a Aplicação, Execute no Console:
+
+```bash
+ng serve --open
