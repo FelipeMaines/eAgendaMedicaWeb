@@ -2,7 +2,7 @@
     height: 4px;
     width: 100%;
     background: linear-gradient(
-      90deg,
+      270deg, 
       #f0f0f000 25%,
       rgb(82, 128, 255) 50%,
       #f0f0f000 75%
@@ -14,9 +14,10 @@
   
   @keyframes loading {
     0% {
-      background-position: -200% 0;
+      background-position: 200% 0; 
     }
     100% {
-      background-position: 200% 0;
+      background-position: -200% 0; 
     }
   }
+  
