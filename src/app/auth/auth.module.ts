@@ -16,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/auth.guard';
 import { LoginGuard } from './services/login.guard';
+import { LoaderService } from '../core/loader/services/loarder.service';
 
 
 
@@ -40,6 +41,6 @@ import { LoginGuard } from './services/login.guard';
   ],
   exports: [LoginComponent],
 
-  providers: [AuthService, LocalStorageService, AuthGuard, LoginGuard]
+  providers: [AuthService, LocalStorageService, AuthGuard, LoginGuard, LoaderService]
 })
 export class AuthModule { }
