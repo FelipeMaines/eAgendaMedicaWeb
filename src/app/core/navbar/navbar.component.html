@@ -1,5 +1,5 @@
 <mat-sidenav-container class="example-container" >
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+    <mat-sidenav #sidenav mode="over" [(opened)]="opened" (opened)="events.push('open!')"
         (closed)="events.push('close!')" >
         <mat-toolbar class="d-flex align-items-center justify-content-center "  routerLink="dashboard">Menu</mat-toolbar>
         <mat-nav-list class="p-2">
@@ -16,7 +16,7 @@
         <p>
             <mat-toolbar>
                 <button mat-icon-button class="example-icon" (click)="sidenav.toggle()"
-                    aria-label="Example icon-button with menu icon">
+                    aria-label="menu icon">
                     <mat-icon routerLink="/dashboard">menu</mat-icon>
                 </button>
                 <span>eAgenda Medica</span>
