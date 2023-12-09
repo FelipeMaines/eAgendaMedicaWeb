@@ -60,6 +60,7 @@ export class InserirConsultaComponent extends BaseFormComponent implements OnIni
 
   processarFalha(err: any): void {
     this.notificacao.aviso(err);
+    console.log(err);
   }
 
   processarSucesso(dados: FormConsultaViewModel)

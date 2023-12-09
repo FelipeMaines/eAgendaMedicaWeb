@@ -41,7 +41,7 @@ export class LocalStorageService {
     }
 
     public obterDataExpiracaoToken(): Date | null {
-        const dataExpiracaoJson = localStorage.getItem('eAgenda.dataExpiracaoToken');
+        const dataExpiracaoJson = localStorage.getItem('eAgendaMedica.dataExpiracaoToken');
 
         if (dataExpiracaoJson)
             return new Date(dataExpiracaoJson);
@@ -50,8 +50,8 @@ export class LocalStorageService {
     }
 
     public limparDadosLocais() {
-        localStorage.removeItem('eAgenda.token');
-        localStorage.removeItem('eAgenda.dataExpiracaoToken');
-        localStorage.removeItem('eAgenda.usuario');
+        localStorage.removeItem('eAgendaMedica.token');
+        localStorage.removeItem('eAgendaMedica.dataExpiracaoToken');
+        localStorage.removeItem('eAgendaMedica.usuario');
     }
 }

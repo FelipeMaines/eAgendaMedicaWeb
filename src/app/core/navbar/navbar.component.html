@@ -1,7 +1,7 @@
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container class="example-container" >
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-        (closed)="events.push('close!')">
-        <mat-toolbar class="d-flex align-items-center justify-content-center" routerLink="dashboard">Menu</mat-toolbar>
+        (closed)="events.push('close!')" >
+        <mat-toolbar class="d-flex align-items-center justify-content-center "  routerLink="dashboard">Menu</mat-toolbar>
         <mat-nav-list class="p-2">
             <a mat-list-item routerLink="">Painel de Controle</a>
             <a mat-list-item routerLink="/medicos/listar"><mat-icon fontIcon="emoji_people"></mat-icon><span class="ms-2"></span>Medicos</a>
@@ -11,7 +11,7 @@
         </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content >
         <!-- Barra Superior -->
         <p>
             <mat-toolbar>
